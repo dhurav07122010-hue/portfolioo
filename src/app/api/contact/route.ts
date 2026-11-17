@@ -112,7 +112,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const recipientEmail = process.env.CONTACT_TO_EMAIL || "dhurav07122010@gmail.com";
+    const recipientEmail = process.env.CONTACT_TO_EMAIL || "ds.studio.buissness@gmail.com";
     const senderEmail = process.env.CONTACT_FROM_EMAIL || "DS Studios <onboarding@resend.dev>";
     const resendApiKey = process.env.RESEND_API_KEY;
     const smtpHost = process.env.SMTP_HOST;
@@ -261,6 +261,48 @@ Or WhatsApp directly: ${whatsappLink}
       const resendData = await resendResponse.json().catch(() => ({}));
 
       if (!resendResponse.ok) {
+        // If Resend returns 403 because unverified sandbox only sends to registered account owner
+        const ownerMatch = typeof resendData?.message === "string"
+          ? resendData.message.match(/testing emails to your own email address \(([^)]+)\)/)
+          : null;
+
+        if (resendResponse.status === 403 && ownerMatch && ownerMatch[1]) {
+          const authorizedOwnerEmail = ownerMatch[1];
+          const bannerHtml = `
+            <div style="background:#fffbeb; border:1px solid #f59e0b; padding:14px; margin-bottom:20px; font-size:12px; font-family:sans-serif; color:#92400e; border-radius:4px;">
+              <strong>Delivery Notice:</strong> This client inquiry was delivered to your registered Resend account email (<code>${escapeHtml(authorizedOwnerEmail)}</code>) because <code>${escapeHtml(recipientEmail)}</code> requires domain verification. To receive emails directly at <code>${escapeHtml(recipientEmail)}</code>, sign up for a free Resend key under that address or verify your custom domain at <a href="https://resend.com/domains" style="color:#b45309; text-decoration:underline;">resend.com/domains</a>.
+            </div>
+          `;
+
+          // Re-send to authorized owner email so inquiry is NEVER lost
+          const fallbackRes = await fetch("https://api.resend.com/emails", {
+            method: "POST",
+            headers: {
+              "Authorization": `Bearer ${resendApiKey}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              from: senderEmail,
+              to: [authorizedOwnerEmail],
+              reply_to: trimmedEmail,
+              subject: `New Inquiry from ${trimmedName}: ${trimmedService}`,
+              html: bannerHtml + emailHtml,
+              text: `[Delivered to ${authorizedOwnerEmail} pending domain verification for ${recipientEmail}]\n\n` + plainText,
+            }),
+          });
+
+          const fallbackData = await fallbackRes.json().catch(() => ({}));
+
+          if (fallbackRes.ok) {
+            return NextResponse.json({
+              success: true,
+              message: "Your inquiry has been successfully delivered to DS Studios.",
+              id: fallbackData?.id,
+              forwarded: true,
+            });
+          }
+        }
+
         console.error("Resend API delivery error:", resendResponse.status, resendData?.message || "Unknown error");
         return NextResponse.json(
           {
