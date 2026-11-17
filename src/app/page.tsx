@@ -8,6 +8,7 @@ import { Process } from "@/components/Process";
 import { About } from "@/components/About";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
+import { WhatsAppBubble } from "@/components/WhatsAppBubble";
 
 export default function Home() {
   return (
@@ -19,10 +20,10 @@ export default function Home() {
         Skip to main content
       </a>
 
-      {/* Subtle top scroll indicator */}
+      {/* Top scroll depth progress indicator */}
       <ScrollProgress />
 
-      {/* Floating navigation header */}
+      {/* Floating navigation header with prominent official logo */}
       <Navbar />
 
       {/* Main portfolio content flow */}
@@ -35,6 +36,9 @@ export default function Home() {
         <About />
         <Contact />
       </main>
+
+      {/* Floating green WhatsApp bubble */}
+      <WhatsAppBubble />
 
       {/* Studio footer */}
       <Footer />

@@ -88,12 +88,12 @@ export function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? "bg-white/95 backdrop-blur-md border-b border-[#E5E5E5] py-3 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"
-            : "bg-white/75 backdrop-blur-sm border-b border-transparent py-4 sm:py-5"
+            ? "bg-white/95 backdrop-blur-md border-b border-[#E5E5E5] py-2.5 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"
+            : "bg-white/85 backdrop-blur-sm border-b border-transparent py-3 sm:py-4"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between">
-          {/* Official DS Studios Brand Logo */}
+          {/* Official DS Studios Brand Logo — Prominently Sized */}
           <Link
             href="/"
             onClick={(e) => {
@@ -102,10 +102,10 @@ export function Navbar() {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }
             }}
-            className="group flex items-center gap-3 hover:opacity-85 transition-opacity focus:outline-none"
+            className="group flex items-center hover:opacity-85 transition-opacity focus:outline-none"
             aria-label="DS Studios Home"
           >
-            <div className="relative w-32 sm:w-40 h-8 sm:h-9">
+            <div className="relative w-36 sm:w-44 h-10 sm:h-12">
               <Image
                 src="/brand/ds-studios-logo-dark.png"
                 alt="DS Studios"
@@ -142,23 +142,11 @@ export function Navbar() {
               );
             })}
 
-            {/* Quick WhatsApp Action */}
-            <a
-              href="https://wa.me/919873111153"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-mono text-[#555555] hover:text-[#111111] transition-colors"
-              title="Chat on WhatsApp"
-            >
-              <MessageCircle className="w-3.5 h-3.5" />
-              <span>WhatsApp</span>
-            </a>
-
-            {/* Start a Project CTA */}
+            {/* Start a Project CTA Button */}
             <a
               href="#contact"
               onClick={(e) => scrollTo(e, "#contact")}
-              className="ml-2 inline-flex items-center gap-1.5 px-4 py-2 text-xs font-mono uppercase tracking-widest text-white bg-[#111111] hover:bg-[#333333] transition-colors"
+              className="ml-2 inline-flex items-center gap-1.5 px-5 py-2.5 text-xs font-mono uppercase tracking-widest text-white bg-[#111111] hover:bg-[#333333] transition-colors"
             >
               <span>Start Project</span>
               <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
@@ -191,7 +179,7 @@ export function Navbar() {
           className="fixed inset-0 z-30 bg-white flex flex-col justify-between p-8 pt-28 md:hidden"
         >
           <div className="flex flex-col space-y-6">
-            <div className="relative w-36 h-9 mb-4">
+            <div className="relative w-40 h-11 mb-2">
               <Image
                 src="/brand/ds-studios-logo-dark.png"
                 alt="DS Studios"
@@ -224,7 +212,7 @@ export function Navbar() {
               href="https://wa.me/919873111153"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full text-center py-3 border border-[#111111] text-[#111111] text-xs font-mono uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-neutral-50"
+              className="w-full text-center py-3 bg-[#25D366] text-white text-xs font-mono uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-[#20ba59] transition-colors"
             >
               <MessageCircle className="w-4 h-4" />
               <span>Chat on WhatsApp (+91 9873111153)</span>

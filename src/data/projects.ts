@@ -9,8 +9,9 @@ export interface Project {
   liveUrl: string;
   deliverables: string[];
   year: string;
-  heroImage: string;
-  secondaryImage?: string;
+  favicon: string;
+  bgColor: string;
+  accentColor: string;
   details: {
     overview: string;
     focus: string;
@@ -32,14 +33,15 @@ export const REAL_PROJECTS: Project[] = [
     liveUrl: "https://saffron-smoke-mocha.vercel.app",
     deliverables: [
       "Bespoke Brand Art Direction",
-      "Interactive Tasting & À La Carte Menu",
+      "Interactive Digital Menu",
       "Direct Table Reservation Flow",
       "Storytelling & Culinary Heritage",
       "Mobile-First Responsive Experience"
     ],
     year: "2026",
-    heroImage: "/projects/saffron-smoke-hero.jpg",
-    secondaryImage: "/projects/dal-saffron.jpg",
+    favicon: "/projects/saffron-smoke-favicon.svg",
+    bgColor: "bg-[#141312]",
+    accentColor: "#E07A2A",
     details: {
       overview:
         "Saffron & Smoke blends classical Indian culinary traditions with modern European plating and ambiance. The website was engineered to evoke the aromas of char, saffron, and slow-cooked rich gravies before guests ever walk in.",
@@ -71,8 +73,9 @@ export const REAL_PROJECTS: Project[] = [
       "SEO for Helmet Accessories in India"
     ],
     year: "2026",
-    heroImage: "/projects/virgovisor-og.jpeg",
-    secondaryImage: "/projects/virgovisor-favicon.png",
+    favicon: "/projects/virgovisor-favicon.png",
+    bgColor: "bg-[#FAFAFA]",
+    accentColor: "#111111",
     details: {
       overview:
         "Virgo Visor addresses the fragmented two-wheeler accessories market in India. Riders frequently struggle to find exact-fitting, distortion-free replacement visors for popular helmet models (Vega, Steelbird, Studds, and international brands).",
@@ -104,8 +107,9 @@ export const REAL_PROJECTS: Project[] = [
       "Accessible Mobile Design for Indian Families"
     ],
     year: "2026",
-    heroImage: "/projects/paradise-hero.png",
-    secondaryImage: "/projects/paradise-logo.svg",
+    favicon: "/projects/paradise-favicon.svg",
+    bgColor: "bg-[#F7F5FC]",
+    accentColor: "#863bff",
     details: {
       overview:
         "Paradise Public School required an authoritative digital presence that reflects its commitment to holistic child development, academic excellence, and modern extracurricular facilities in Delhi.",
