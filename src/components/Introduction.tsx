@@ -7,19 +7,28 @@ export function Introduction() {
   const PILLARS = [
     {
       num: "01",
-      title: "Typographic Rigor",
-      desc: "Hierarchy engineered with mathematical precision. Every letterform, line height, and whitespace rhythm is tuned for instant scannability and lasting editorial dignity.",
+      title: "Clarity & Strategic Design",
+      desc: "Every layout is calibrated for immediate comprehension. We eliminate visual clutter and emphasize your value proposition with strong editorial hierarchy.",
     },
     {
       num: "02",
-      title: "Bespoke Code",
-      desc: "Zero bloated theme builders, disposable page-builders, or fragile plugin nests. Handcrafted Next.js & TypeScript codebases that achieve near-instantaneous load times.",
+      title: "Fast, Clean Engineering",
+      desc: "Built with modern technologies like Next.js and Tailwind CSS. Rapid load speeds on 4G and 5G mobile networks ensure visitors never bounce due to lag.",
     },
     {
       num: "03",
-      title: "Intentional Motion",
-      desc: "Choreographed interactions designed to reinforce spatial awareness and delight visitors, never gratuitous scroll-hijacking that hinders comprehension.",
+      title: "Conversion & Indian Localization",
+      desc: "Thoughtful integration of Indian user habits: prominent WhatsApp communication, seamless mobile interactions, clear pricing structure, and local credibility.",
     },
+  ];
+
+  const AUDIENCES = [
+    "Indian Businesses & MSMEs",
+    "High-Growth Startups",
+    "Independent Entrepreneurs",
+    "Local Consumer Brands",
+    "Schools & Educational Institutions",
+    "Specialized E-Commerce Retailers",
   ];
 
   return (
@@ -32,10 +41,10 @@ export function Introduction() {
         {/* Section Pre-title */}
         <div className="flex items-center justify-between pb-8 border-b border-[#222222] mb-16 sm:mb-24">
           <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#888888]">
-            02 &bull; Ethos &amp; Approach
+            02 &bull; Purpose &amp; Positioning
           </span>
           <span className="text-xs font-mono uppercase tracking-widest text-[#666666]">
-            Architectural Digital Craft
+            Web Design &amp; Development
           </span>
         </div>
 
@@ -48,7 +57,7 @@ export function Introduction() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-3xl sm:text-5xl lg:text-6xl font-serif font-normal leading-[1.15] text-[#FAFAFA] tracking-tight mb-12"
           >
-            Good design is more than what you see. It is how smoothly it breathes, how instantly it answers, and how quietly it endures.
+            We help ambitious Indian businesses and entrepreneurs build digital experiences that stand out, load fast, and convert.
           </motion.h2>
 
           <motion.div
@@ -56,15 +65,32 @@ export function Introduction() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-10 text-base sm:text-lg text-[#999999] font-normal leading-relaxed mb-20"
+            className="grid grid-cols-1 md:grid-cols-2 gap-10 text-base sm:text-lg text-[#999999] font-normal leading-relaxed mb-16"
           >
             <p>
-              In an era overwhelmed by disposable digital noise, formulaic templates, and generic agency bloat, DS Studios operates with architectural discipline. We treat each web project as an enduring piece of digital architecture — designed with deliberate negative space, razor-sharp typography, and uncompromising performance.
+              In today&apos;s digital economy, an outdated or slow website actively costs your business customers. DS Studios operates as a dedicated design and engineering partner for companies ready to elevate their online presence to international standards.
             </p>
             <p>
-              By uniting creative direction and frontend engineering under one focused studio practice, there is zero friction between aesthetic vision and technical reality. The result is a digital presence that commands immediate authority and converts discerning audiences.
+              We combine minimalist aesthetic discipline with modern full-stack performance. From bespoke corporate websites and high-converting landing pages to educational portals and e-commerce storefronts, we build platforms tailored for long-term business success.
             </p>
           </motion.div>
+        </div>
+
+        {/* Target Audience Chips */}
+        <div className="pt-8 pb-16 border-t border-[#222222]">
+          <p className="text-xs font-mono uppercase tracking-widest text-[#777777] mb-4">
+            Tailored Solutions For:
+          </p>
+          <div className="flex flex-wrap gap-2.5">
+            {AUDIENCES.map((aud) => (
+              <span
+                key={aud}
+                className="px-3.5 py-1.5 border border-[#333333] bg-[#141414] text-xs font-mono text-neutral-300"
+              >
+                {aud}
+              </span>
+            ))}
+          </div>
         </div>
 
         {/* 3 Pillars Grid */}

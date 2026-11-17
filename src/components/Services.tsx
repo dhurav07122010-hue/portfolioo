@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import { SERVICES } from "@/data/services";
-import { Plus, Minus, ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { Plus, Minus, ArrowUpRight, CheckCircle2, MessageCircle } from "lucide-react";
 
 export function Services() {
-  const [expandedId, setExpandedId] = useState<string>("business-websites");
+  const [expandedId, setExpandedId] = useState<string>("business-website-development");
 
   const toggleExpand = (id: string) => {
     setExpandedId((prev) => (prev === id ? "" : id));
@@ -21,18 +21,18 @@ export function Services() {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12 border-b border-[#E5E5E5] mb-16">
         <div>
           <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#777777] block mb-3">
-            04 &bull; Core Capabilities
+            04 &bull; Studio Capabilities
           </span>
           <h2
             id="services-heading"
             className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-tight text-[#111111]"
           >
-            Capabilities &amp; Studio Offerings.
+            Services &amp; Specializations.
           </h2>
         </div>
 
         <p className="max-w-md text-sm sm:text-base text-[#666666] leading-relaxed">
-          Six disciplined digital disciplines. Handcrafted with architectural rigor, high-performance TypeScript codebases, and custom motion design.
+          Six disciplined digital offerings tailored for Indian businesses, startups, and institutions. Every website is built from scratch with modern technologies, high speed, and bespoke design.
         </p>
       </div>
 
@@ -93,7 +93,7 @@ export function Services() {
                       </p>
 
                       <div className="p-4 border border-[#E5E5E5] bg-white space-y-2">
-                        <span className="text-[11px] font-mono uppercase tracking-widest text-[#777777] block">
+                        <span className="text-xs font-mono uppercase tracking-widest text-[#777777] block">
                           Ideal Engagement Profile
                         </span>
                         <p className="text-xs text-[#444444] leading-relaxed">
@@ -101,14 +101,24 @@ export function Services() {
                         </p>
                       </div>
 
-                      <div className="flex items-center gap-6 text-xs font-mono text-[#777777]">
+                      <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-[#777777]">
                         <span>Timeline: {service.timeline}</span>
+                        <span>&bull;</span>
+                        <a
+                          href="https://wa.me/919873111153?text=Hi%20DS%20Studios,%20I%20am%20interested%20in%20your%20services"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-emerald-800 font-bold hover:underline"
+                        >
+                          <MessageCircle className="w-3.5 h-3.5" />
+                          <span>WhatsApp Enquiry</span>
+                        </a>
                         <span>&bull;</span>
                         <a
                           href="#contact"
                           className="inline-flex items-center gap-1 text-[#111111] underline hover:text-[#555555] uppercase tracking-wider font-bold"
                         >
-                          Inquire about this service
+                          Enquire Now
                           <ArrowUpRight className="w-3 h-3" />
                         </a>
                       </div>
@@ -118,7 +128,7 @@ export function Services() {
                     <div className="lg:col-span-6 space-y-6">
                       <div>
                         <h4 className="text-xs font-mono uppercase tracking-widest text-[#777777] mb-3">
-                          Standard Deliverables &amp; Inclusions
+                          Key Deliverables
                         </h4>
                         <ul className="space-y-2 text-xs sm:text-sm text-[#333333]">
                           {service.deliverables.map((item) => (
@@ -132,7 +142,7 @@ export function Services() {
 
                       <div className="pt-4 border-t border-[#E5E5E5]">
                         <h4 className="text-xs font-mono uppercase tracking-widest text-[#777777] mb-2.5">
-                          Technology Foundation
+                          Technology Stack
                         </h4>
                         <div className="flex flex-wrap gap-1.5">
                           {service.technologies.map((tech) => (

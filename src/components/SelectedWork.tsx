@@ -1,31 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { PROJECTS, Project } from "@/data/projects";
+import { REAL_PROJECTS, Project } from "@/data/projects";
 import { ProjectCard } from "./ProjectCard";
 import { ProjectModal } from "./ProjectModal";
-import { Info } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 export function SelectedWork() {
   const [activeModalProject, setActiveModalProject] = useState<Project | null>(null);
-  const [filter, setFilter] = useState<string>("all");
-
-  const categories = [
-    { id: "all", label: "All Projects" },
-    { id: "e-commerce", label: "Commerce" },
-    { id: "hospitality", label: "Hospitality" },
-    { id: "developer", label: "Dev & SaaS" },
-    { id: "editorial", label: "Editorial" },
-  ];
-
-  const filteredProjects = PROJECTS.filter((proj) => {
-    if (filter === "all") return true;
-    if (filter === "e-commerce") return proj.category.includes("E-Commerce") || proj.category.includes("Shopify");
-    if (filter === "hospitality") return proj.category.includes("Restaurant");
-    if (filter === "developer") return proj.category.includes("SaaS");
-    if (filter === "editorial") return proj.category.includes("Portfolio");
-    return true;
-  });
 
   return (
     <section
@@ -37,56 +19,25 @@ export function SelectedWork() {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12 border-b border-[#E5E5E5] mb-16">
         <div>
           <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#777777] block mb-3">
-            03 &bull; Selected Demonstration Work
+            03 &bull; Selected Work
           </span>
           <h2
             id="selected-work-title"
             className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-tight text-[#111111]"
           >
-            Digital Flagships &amp; Concept Studies.
+            Digital Flagships &amp; Live Projects.
           </h2>
         </div>
 
         <p className="max-w-md text-sm sm:text-base text-[#666666] leading-relaxed">
-          A curated portfolio of five comprehensive digital concept studies demonstrating our capabilities in art direction, bespoke typography, e-commerce, and high-performance engineering.
+          Explore three recent live web platforms engineered by DS Studios across Indian hospitality, pan-India e-commerce, and educational institutions.
         </p>
       </div>
 
-      {/* Honest Solo Operation Notice */}
-      <div className="mb-12 p-4 border border-[#E5E5E5] bg-neutral-50 flex items-start sm:items-center gap-3 text-xs text-[#555555]">
-        <Info className="w-4 h-4 text-[#111111] shrink-0 mt-0.5 sm:mt-0" />
-        <p>
-          <strong className="text-[#111111] font-semibold">Studio Transparency Note:</strong> These demonstration projects represent DS Studios concept architectural case studies created to showcase design standards and technical execution. We never fabricate client testimonials, artificial team sizes, or inflated business statistics.
-        </p>
-      </div>
-
-      {/* Category Filter Chips */}
-      <div className="flex flex-wrap gap-2 mb-12" role="tablist" aria-label="Project filter">
-        {categories.map((cat) => (
-          <button
-            key={cat.id}
-            type="button"
-            role="tab"
-            aria-selected={filter === cat.id}
-            onClick={() => setFilter(cat.id)}
-            className={`px-4 py-2 text-xs font-mono uppercase tracking-widest transition-all ${
-              filter === cat.id
-                ? "bg-[#111111] text-white"
-                : "border border-[#E5E5E5] text-[#777777] hover:border-[#111111] hover:text-[#111111] bg-white"
-            }`}
-          >
-            {cat.label}
-          </button>
-        ))}
-      </div>
-
-      {/* Projects Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-        {filteredProjects.map((project, idx) => (
-          <div
-            key={project.id}
-            className={idx === 0 ? "lg:col-span-2" : ""}
-          >
+      {/* Real Projects Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
+        {REAL_PROJECTS.map((project) => (
+          <div key={project.id} className="flex">
             <ProjectCard
               project={project}
               onOpenPreview={(p) => setActiveModalProject(p)}
@@ -95,7 +46,27 @@ export function SelectedWork() {
         ))}
       </div>
 
-      {/* Modal Inspector for Concept Demonstrations */}
+      {/* Bottom Live Links Bar */}
+      <div className="mt-16 p-6 sm:p-8 border border-[#E5E5E5] bg-neutral-50 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="space-y-1 text-center sm:text-left">
+          <p className="text-sm font-bold text-[#111111]">
+            Ready to build a digital presence of this caliber?
+          </p>
+          <p className="text-xs text-[#666666]">
+            Every project is engineered with bespoke typography, responsive layouts, and modern Next.js performance.
+          </p>
+        </div>
+
+        <a
+          href="#contact"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-[#111111] text-white text-xs font-mono uppercase tracking-widest hover:bg-[#333333] transition-colors shrink-0"
+        >
+          <span>Discuss Your Project</span>
+          <ArrowUpRight className="w-3.5 h-3.5" />
+        </a>
+      </div>
+
+      {/* Modal Inspector for Project Deep Dive */}
       <ProjectModal
         project={activeModalProject}
         onClose={() => setActiveModalProject(null)}

@@ -2,12 +2,12 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import Image from "next/image";
+import { ArrowUpRight, Menu, X, MessageCircle } from "lucide-react";
 
 const NAV_LINKS = [
   { href: "#work", label: "Work", id: "work" },
   { href: "#services", label: "Services", id: "services" },
-  { href: "#process", label: "Process", id: "process" },
   { href: "#about", label: "About", id: "about" },
   { href: "#contact", label: "Contact", id: "contact" },
 ];
@@ -17,13 +17,12 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
 
-  // Monitor scroll for shadow/border and section highlighting
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
+      setIsScrolled(window.scrollY > 25);
 
       const sections = NAV_LINKS.map((link) => link.id);
-      const scrollPosition = window.scrollY + 200;
+      const scrollPosition = window.scrollY + 180;
 
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);
@@ -37,7 +36,7 @@ export function Navbar() {
         }
       }
 
-      if (window.scrollY < 150) {
+      if (window.scrollY < 120) {
         setActiveSection("");
       }
     };
@@ -47,7 +46,6 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on Escape key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape" && mobileMenuOpen) {
@@ -58,7 +56,6 @@ export function Navbar() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [mobileMenuOpen]);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -91,12 +88,12 @@ export function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? "bg-white/90 backdrop-blur-md border-b border-[#E5E5E5] py-3.5 shadow-[0_1px_10px_rgba(0,0,0,0.03)]"
-            : "bg-white/60 backdrop-blur-sm border-b border-transparent py-5"
+            ? "bg-white/95 backdrop-blur-md border-b border-[#E5E5E5] py-3 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"
+            : "bg-white/75 backdrop-blur-sm border-b border-transparent py-4 sm:py-5"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between">
-          {/* Studio Wordmark */}
+          {/* Official DS Studios Brand Logo */}
           <Link
             href="/"
             onClick={(e) => {
@@ -105,15 +102,18 @@ export function Navbar() {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }
             }}
-            className="group flex items-center gap-2 text-sm sm:text-base tracking-widest font-semibold text-[#111111] hover:opacity-75 transition-opacity"
+            className="group flex items-center gap-3 hover:opacity-85 transition-opacity focus:outline-none"
             aria-label="DS Studios Home"
           >
-            <span className="font-mono text-xs tracking-wider border border-[#111111] px-1.5 py-0.5 group-hover:bg-[#111111] group-hover:text-white transition-colors">
-              DS®
-            </span>
-            <span className="tracking-[0.2em] uppercase font-bold text-xs sm:text-sm">
-              Studios
-            </span>
+            <div className="relative w-32 sm:w-40 h-8 sm:h-9">
+              <Image
+                src="/brand/ds-studios-logo-dark.png"
+                alt="DS Studios"
+                fill
+                priority
+                className="object-contain object-left"
+              />
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -142,13 +142,25 @@ export function Navbar() {
               );
             })}
 
-            {/* Quick CTA */}
+            {/* Quick WhatsApp Action */}
+            <a
+              href="https://wa.me/919873111153"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-mono text-[#555555] hover:text-[#111111] transition-colors"
+              title="Chat on WhatsApp"
+            >
+              <MessageCircle className="w-3.5 h-3.5" />
+              <span>WhatsApp</span>
+            </a>
+
+            {/* Start a Project CTA */}
             <a
               href="#contact"
               onClick={(e) => scrollTo(e, "#contact")}
-              className="ml-4 inline-flex items-center gap-1.5 px-4 py-2 text-xs font-mono uppercase tracking-widest text-white bg-[#111111] hover:bg-[#333333] transition-colors"
+              className="ml-2 inline-flex items-center gap-1.5 px-4 py-2 text-xs font-mono uppercase tracking-widest text-white bg-[#111111] hover:bg-[#333333] transition-colors"
             >
-              <span>Initiate</span>
+              <span>Start Project</span>
               <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
             </a>
           </nav>
@@ -179,10 +191,18 @@ export function Navbar() {
           className="fixed inset-0 z-30 bg-white flex flex-col justify-between p-8 pt-28 md:hidden"
         >
           <div className="flex flex-col space-y-6">
-            <p className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#777777]">
+            <div className="relative w-36 h-9 mb-4">
+              <Image
+                src="/brand/ds-studios-logo-dark.png"
+                alt="DS Studios"
+                fill
+                className="object-contain object-left"
+              />
+            </div>
+            <p className="text-xs font-mono uppercase tracking-[0.25em] text-[#777777]">
               Directory
             </p>
-            <nav className="flex flex-col space-y-5">
+            <nav className="flex flex-col space-y-4">
               {NAV_LINKS.map((link, idx) => (
                 <a
                   key={link.id}
@@ -199,10 +219,16 @@ export function Navbar() {
             </nav>
           </div>
 
-          <div className="pt-8 border-t border-[#E5E5E5] flex flex-col gap-4">
-            <p className="text-xs font-mono text-[#777777] uppercase tracking-wider">
-              Independent Studio &bull; Worldwide
-            </p>
+          <div className="pt-6 border-t border-[#E5E5E5] flex flex-col gap-3">
+            <a
+              href="https://wa.me/919873111153"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full text-center py-3 border border-[#111111] text-[#111111] text-xs font-mono uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-neutral-50"
+            >
+              <MessageCircle className="w-4 h-4" />
+              <span>Chat on WhatsApp (+91 9873111153)</span>
+            </a>
             <a
               href="#contact"
               onClick={(e) => scrollTo(e, "#contact")}

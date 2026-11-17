@@ -28,19 +28,18 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "DS Studios — Independent Web Design & Development Studio",
+  title: "DS Studios — Premium Web Design & Development Studio | India",
   description:
-    "We build digital experiences. DS Studios is an independent creative studio crafting minimal, high-impact websites and bespoke digital products for ambitious brands, startups, and creators worldwide.",
+    "We Build Digital Experiences. DS Studios creates modern, high-performance websites for Indian businesses, startups, schools, and e-commerce brands.",
   keywords: [
     "DS Studios",
-    "Web Design Studio",
-    "Web Development",
-    "Next.js Developer",
-    "Minimalist Web Design",
-    "Portfolio Design",
-    "E-commerce Websites",
-    "Shopify Development",
-    "Digital Experiences"
+    "Web design studio India",
+    "Website development services in India",
+    "Business website development",
+    "E-commerce website development",
+    "Shopify website development",
+    "Website designer for businesses",
+    "Next.js web developer India"
   ],
   authors: [{ name: "DS Studios" }],
   creator: "DS Studios",
@@ -51,41 +50,31 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "en_IN",
     url: "https://ds-studios.design",
     siteName: "DS Studios",
-    title: "DS Studios — Independent Web Design & Development Studio",
+    title: "DS Studios — Premium Web Design & Development Studio | India",
     description:
-      "We build digital experiences. Minimal, confident, precise, and premium web design and engineering.",
+      "We Build Digital Experiences. Modern web design, e-commerce, and high-performance development for Indian businesses.",
     images: [
       {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "DS Studios — We build digital experiences",
+        url: "/brand/ds-studios-logo.png",
+        width: 1024,
+        height: 576,
+        alt: "DS Studios — Official Brand Logo",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "DS Studios — We build digital experiences",
+    title: "DS Studios — We Build Digital Experiences",
     description:
-      "Independent web design and development studio. Minimal, confident, precise, premium.",
-    images: ["/og-image.png"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
+      "Premium web design and development studio for Indian businesses and global clients.",
+    images: ["/brand/ds-studios-logo.png"],
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/brand/ds-studios-favicon.png",
+    apple: "/brand/ds-studios-favicon.png",
   },
 };
 
@@ -94,18 +83,20 @@ const jsonLd = {
   "@type": "ProfessionalService",
   name: "DS Studios",
   description:
-    "Independent web design and development studio crafting minimal, high-impact digital experiences.",
+    "Web design and development studio in India creating modern websites and digital flagships.",
   url: "https://ds-studios.design",
-  areaServed: "Worldwide",
+  telephone: "+91-9873111153",
+  email: "ds.studio.buissness@gmail.com",
+  areaServed: ["India", "Worldwide"],
+  priceRange: "₹₹",
   serviceType: [
-    "Web Design",
-    "Web Development",
-    "E-Commerce Websites",
-    "Shopify Storefronts",
-    "Landing Pages",
-    "Website Maintenance"
+    "Business Website Development",
+    "E-Commerce Website Development",
+    "Shopify Store Development",
+    "Landing Page Development",
+    "Portfolio Website Development",
+    "Website Redesign and Maintenance"
   ],
-  priceRange: "$$",
 };
 
 export default function RootLayout({
@@ -119,6 +110,7 @@ export default function RootLayout({
       className={`${inter.variable} ${playfair.variable} ${jetbrainsMono.variable} scroll-smooth antialiased selection:bg-[#111111] selection:text-white`}
     >
       <head>
+        <link rel="icon" href="/brand/ds-studios-favicon.png" type="image/png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

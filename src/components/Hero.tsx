@@ -45,9 +45,9 @@ export function Hero() {
     <section
       id="hero"
       aria-label="Hero Introduction"
-      className="relative min-h-[92vh] sm:min-h-screen flex flex-col justify-between pt-28 pb-12 sm:pb-16 px-6 sm:px-8 lg:px-12 max-w-7xl mx-auto w-full border-b border-[#E5E5E5]"
+      className="relative min-h-[90vh] sm:min-h-screen flex flex-col justify-between pt-28 pb-12 sm:pb-16 px-6 sm:px-8 lg:px-12 max-w-7xl mx-auto w-full border-b border-[#E5E5E5]"
     >
-      {/* Top Meta Indicator */}
+      {/* Top Meta Status Indicator */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -60,17 +60,17 @@ export function Hero() {
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#111111]"></span>
           </span>
           <span className="text-xs font-mono uppercase tracking-widest text-[#777777]">
-            Available for select Q1/Q2 engagements
+            Available for New Commissions &bull; India &amp; Worldwide
           </span>
         </div>
         <div className="hidden sm:flex items-center gap-6 text-xs font-mono uppercase tracking-widest text-[#777777]">
-          <span>Independent Studio</span>
+          <span>IST (UTC+05:30)</span>
           <span>&bull;</span>
-          <span>Worldwide</span>
+          <span>New Delhi, India</span>
         </div>
       </motion.div>
 
-      {/* Monumental Headline */}
+      {/* Main Monumental Headline */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -81,7 +81,7 @@ export function Hero() {
           variants={itemVariants}
           className="text-xs sm:text-sm font-mono uppercase tracking-[0.25em] text-[#777777] mb-6"
         >
-          DS Studios &bull; Digital Design &amp; Web Development
+          DS Studios &bull; Web Design &amp; Development Studio
         </motion.p>
 
         <motion.h1
@@ -100,7 +100,7 @@ export function Hero() {
           className="mt-8 sm:mt-12 grid grid-cols-1 md:grid-cols-12 gap-8 items-end"
         >
           <p className="md:col-span-7 lg:col-span-6 text-base sm:text-lg lg:text-xl text-[#555555] font-normal leading-relaxed">
-            An independent web design and development studio crafting minimal, high-impact digital flagships, bespoke e-commerce, and tailored web applications for founders, brands, and creators worldwide.
+            DS Studios creates modern websites and digital experiences that help businesses build a stronger presence online. Dedicated to thoughtful design, high-performance code, and measurable growth.
           </p>
 
           <div className="md:col-span-5 lg:col-span-6 flex flex-wrap items-center gap-4 md:justify-end">
@@ -109,7 +109,7 @@ export function Hero() {
               onClick={(e) => scrollTo(e, "work")}
               className="group inline-flex items-center gap-2 px-6 py-3.5 bg-[#111111] text-white text-xs font-mono uppercase tracking-widest hover:bg-[#333333] transition-all duration-200"
             >
-              <span>Explore our work</span>
+              <span>Explore Our Work</span>
               <ArrowDown className="w-3.5 h-3.5 group-hover:translate-y-0.5 transition-transform" />
             </a>
 
@@ -118,7 +118,7 @@ export function Hero() {
               onClick={(e) => scrollTo(e, "contact")}
               className="inline-flex items-center gap-2 px-6 py-3.5 border border-[#111111] text-[#111111] text-xs font-mono uppercase tracking-widest hover:bg-[#111111] hover:text-white transition-all duration-200"
             >
-              <span>Start a project</span>
+              <span>Start a Project</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
           </div>
@@ -133,8 +133,7 @@ export function Hero() {
         className="flex items-center justify-between pt-6 border-t border-[#E5E5E5] text-xs font-mono uppercase tracking-widest text-[#777777]"
       >
         <div className="flex items-center gap-2">
-          <span>01 / 05</span>
-          <span className="hidden sm:inline">&bull; Architecture &bull; Code &bull; Motion</span>
+          <span>Featured: Saffron &amp; Smoke &bull; Virgo Visor &bull; Paradise Public School</span>
         </div>
 
         <a

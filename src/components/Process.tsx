@@ -6,53 +6,53 @@ const STAGES = [
   {
     step: "01",
     name: "Discover",
-    subtitle: "Strategy, Positioning & Architecture",
+    subtitle: "Understanding & Strategy",
     description:
-      "We begin with an exhaustive analysis of your brand narrative, target audience, competitive landscape, and digital objectives. We map out information architecture, page hierarchies, and technical requirements before touching a single pixel.",
+      "We begin by understanding your business model, target audience, brand goals, and specific project requirements. We outline information architecture, key conversion actions, and technical scope.",
     deliverables: [
-      "Brand Positioning & Visual Audit",
+      "Business & Audience Goals Alignment",
       "Sitemap & Information Architecture",
-      "Technical Architecture Plan",
-      "Creative Direction Brief"
+      "Design Direction & Wireframes",
+      "Technical Scope Confirmation"
     ],
   },
   {
     step: "02",
     name: "Design",
-    subtitle: "Art Direction, Typography & Prototyping",
+    subtitle: "Art Direction & Responsive UI",
     description:
-      "Translating strategy into monumental visual identities. We craft bespoke typography scales, grid structures, responsive layout systems, and tactile interaction states. You review realistic, interactive prototypes — not static mockups.",
+      "We craft a clean, premium, responsive website experience tailored for your brand. Featuring modern typography, balanced negative space, and intuitive interactions designed for Indian and global users.",
     deliverables: [
-      "Custom Editorial Typography System",
-      "High-Fidelity Responsive Prototypes",
-      "Micro-interaction & Motion Choreography",
-      "Design System Tokens & Components"
+      "Bespoke Responsive Layouts",
+      "Editorial Typography & Grid System",
+      "Interactive Prototypes for Review",
+      "Mobile-First Interaction States"
     ],
   },
   {
     step: "03",
     name: "Develop",
-    subtitle: "Next.js Engineering, Clean Code & Motion",
+    subtitle: "Clean Code & Fast Performance",
     description:
-      "Transforming approved designs into a production-grade codebase. Built with Next.js App Router, TypeScript, and Tailwind CSS. We calibrate smooth transitions with Framer Motion and ensure every line of code is semantic and lightweight.",
+      "We build your website using modern, industry-standard technologies: Next.js App Router, TypeScript, and Tailwind CSS. Every page is optimized for rapid loading on Indian 4G/5G mobile connections.",
     deliverables: [
-      "Type-Safe Next.js & React 19 Codebase",
-      "Fluid Animation & Scroll Interactions",
-      "CMS / E-Commerce Backend Integration",
-      "Full Device & Viewport Optimization"
+      "Type-Safe Next.js & React Codebase",
+      "Smooth Framer Motion Interactions",
+      "WhatsApp & Contact Flow Integration",
+      "Rigorous Cross-Device Responsiveness"
     ],
   },
   {
     step: "04",
     name: "Deliver",
-    subtitle: "QA Auditing, Launch & Guardianship",
+    subtitle: "Testing, Review & Handoff",
     description:
-      "Rigorous pre-launch QA across seven key device viewports, screen readers, and network speeds. We optimize Core Web Vitals, implement structured SEO schema, verify domain DNS, and provide comprehensive walkthroughs.",
+      "We test across mobile devices, tablets, and desktop resolutions. After thorough review, SEO configuration, and domain setup, we hand over the completed website with full guidance.",
     deliverables: [
-      "Lighthouse 95+ Performance Audit",
-      "WCAG 2.2 AA Accessibility Verification",
-      "Production Vercel Deployment & SSL",
-      "Post-Launch Support & Warranty"
+      "Cross-Device & Browser QA Testing",
+      "Speed & Core Web Vitals Optimization",
+      "Domain DNS & SSL Configuration",
+      "Handoff & Ongoing Support Support"
     ],
   },
 ];
@@ -68,18 +68,18 @@ export function Process() {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12 border-b border-[#E5E5E5] mb-16">
         <div>
           <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#777777] block mb-3">
-            05 &bull; Execution Methodology
+            05 &bull; Our Process
           </span>
           <h2
             id="process-heading"
             className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-tight text-[#111111]"
           >
-            A Disciplined 4-Stage Process.
+            Four Disciplined Stages.
           </h2>
         </div>
 
         <p className="max-w-md text-sm sm:text-base text-[#666666] leading-relaxed">
-          Predictable milestones, rigorous engineering standards, and direct collaboration from initial concept to live production.
+          From first conversation to live deployment, our 4-stage process guarantees transparency, clear milestones, and exceptional quality.
         </p>
       </div>
 
@@ -101,7 +101,7 @@ export function Process() {
                   {stage.step}
                 </span>
                 <span className="text-[10px] font-mono uppercase tracking-widest text-[#777777] border border-[#E5E5E5] px-2 py-0.5">
-                  Phase 0{idx + 1}
+                  Stage 0{idx + 1}
                 </span>
               </div>
               <h3 className="text-2xl font-serif font-bold tracking-tight text-[#111111]">
@@ -120,7 +120,7 @@ export function Process() {
             {/* Deliverables List */}
             <div className="pt-4 border-t border-[#E5E5E5] mt-auto">
               <span className="text-[10px] font-mono uppercase tracking-widest text-[#777777] block mb-2">
-                Phase Deliverables:
+                Stage Deliverables:
               </span>
               <ul className="space-y-1.5 text-xs text-[#333333]">
                 {stage.deliverables.map((item) => (
