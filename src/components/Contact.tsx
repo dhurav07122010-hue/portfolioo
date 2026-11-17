@@ -9,7 +9,6 @@ interface FormState {
   email: string;
   phone: string;
   serviceRequired: string;
-  budgetRange: string;
   description: string;
   honeypot: string;
 }
@@ -30,13 +29,6 @@ const SERVICES_OPTIONS = [
   "Website Redesign & Maintenance",
 ];
 
-const BUDGET_RANGES_INR = [
-  "< ₹30,000",
-  "₹30,000 – ₹75,000",
-  "₹75,000 – ₹1,50,000",
-  "₹1,50,000+",
-];
-
 export function Contact() {
   const [formData, setFormData] = useState<FormState>({
     fullName: "",
@@ -44,7 +36,6 @@ export function Contact() {
     email: "",
     phone: "",
     serviceRequired: "Business Website Development",
-    budgetRange: "₹30,000 – ₹75,000",
     description: "",
     honeypot: "",
   });
@@ -101,7 +92,6 @@ export function Contact() {
       email: "",
       phone: "",
       serviceRequired: "Business Website Development",
-      budgetRange: "₹30,000 – ₹75,000",
       description: "",
       honeypot: "",
     });
@@ -109,7 +99,6 @@ export function Contact() {
     setSubmitted(false);
   };
 
-  // WhatsApp quick link with pre-filled message
   const whatsappUrl = `https://wa.me/919873111153?text=${encodeURIComponent(
     `Hi DS Studios, I am interested in ${formData.serviceRequired}. My name is ${formData.fullName || "a prospective client"}.`
   )}`;
@@ -152,7 +141,7 @@ export function Contact() {
           </div>
 
           <div className="space-y-4">
-            {/* WhatsApp CTA (Prominent Indian Channel) */}
+            {/* WhatsApp CTA */}
             <a
               href="https://wa.me/919873111153"
               target="_blank"
@@ -225,7 +214,7 @@ export function Contact() {
           </div>
         </div>
 
-        {/* Right Column: Functional Inquiry Form */}
+        {/* Right Column: Functional Inquiry Form (Budget Removed) */}
         <div className="lg:col-span-7">
           {submitted ? (
             <div
@@ -241,7 +230,7 @@ export function Contact() {
                   Project Brief Received
                 </h3>
                 <p className="text-sm text-[#555555] max-w-md mx-auto leading-relaxed">
-                  Thank you, <strong>{formData.fullName}</strong>. Your enquiry for <strong>{formData.serviceRequired}</strong> has been validated.
+                  Thank you, <strong>{formData.fullName}</strong>. Your enquiry for <strong>{formData.serviceRequired}</strong> has been received. We will respond promptly.
                 </p>
               </div>
 
@@ -337,7 +326,7 @@ export function Contact() {
                     name="businessName"
                     value={formData.businessName}
                     onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
-                    placeholder="e.g. Saffron Ventures, Delhi"
+                    placeholder="e.g. Acme Innovations, Delhi"
                     className="w-full px-4 py-3 border border-[#E5E5E5] text-sm text-[#111111] placeholder:text-[#999999] bg-white focus:outline-none focus:border-[#111111] transition-colors"
                   />
                 </div>
@@ -431,30 +420,7 @@ export function Contact() {
                 </select>
               </div>
 
-              {/* Row 4: Budget Range in INR (Optional) */}
-              <div className="space-y-2">
-                <label className="block text-xs font-mono uppercase tracking-widest text-[#111111]">
-                  Estimated Budget Range in INR <span className="text-[#888888] font-normal">(Optional)</span>
-                </label>
-                <div className="flex flex-wrap gap-2">
-                  {BUDGET_RANGES_INR.map((range) => (
-                    <button
-                      key={range}
-                      type="button"
-                      onClick={() => setFormData({ ...formData, budgetRange: range })}
-                      className={`px-3 py-2 text-xs font-mono transition-all ${
-                        formData.budgetRange === range
-                          ? "bg-[#111111] text-white font-semibold"
-                          : "border border-[#E5E5E5] text-[#555555] hover:border-[#111111] bg-white"
-                      }`}
-                    >
-                      {range}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Row 5: Project Description */}
+              {/* Row 4: Project Description */}
               <div className="space-y-2">
                 <label
                   htmlFor="description"
