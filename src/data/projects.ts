@@ -9,9 +9,7 @@ export interface Project {
   liveUrl: string;
   deliverables: string[];
   year: string;
-  favicon: string;
-  bgColor: string;
-  accentColor: string;
+  screenshot: string;
   details: {
     overview: string;
     focus: string;
@@ -33,24 +31,22 @@ export const REAL_PROJECTS: Project[] = [
     liveUrl: "https://saffron-smoke-mocha.vercel.app",
     deliverables: [
       "Bespoke Brand Art Direction",
-      "Interactive Digital Menu",
+      "Interactive Digital Tasting Menu",
       "Direct Table Reservation Flow",
-      "Storytelling & Culinary Heritage",
-      "Mobile-First Responsive Experience"
+      "Culinary Storytelling",
+      "Mobile-First Responsive Design"
     ],
     year: "2026",
-    favicon: "/projects/saffron-smoke-favicon.svg",
-    bgColor: "bg-[#141312]",
-    accentColor: "#E07A2A",
+    screenshot: "/work/saffron-smoke-homepage.png",
     details: {
       overview:
         "Saffron & Smoke blends classical Indian culinary traditions with modern European plating and ambiance. The website was engineered to evoke the aromas of char, saffron, and slow-cooked rich gravies before guests ever walk in.",
       focus:
-        "Creating an appetising, high-conversion digital journey with sub-second page transitions, dynamic dietary filters, and direct reservation inquiries without heavy third-party aggregator commissions.",
+        "Creating an appetising, high-conversion digital journey with sub-second page transitions, dynamic dietary filters, and direct reservation inquiries without third-party commission overhead.",
       results: [
-        "Interactive digital menu with full spice notes and pairings",
+        "Interactive digital menu with full spice notes and wine pairings",
         "Streamlined reservation drawer optimized for Indian smartphones",
-        "Fast visual galleries loading rich food photography at minimal data bandwidth"
+        "Sub-second load times on 4G and 5G mobile connections"
       ],
       techStack: ["React", "Next.js", "Tailwind CSS", "Lucide Icons", "Vercel"]
     }
@@ -66,16 +62,14 @@ export const REAL_PROJECTS: Project[] = [
       "A dedicated automotive e-commerce storefront for Vishnu Enterprises in Delhi, India. Tailored for daily commuters and motorcycle enthusiasts seeking optical-grade polycarbonate replacement visors across major helmet brands.",
     liveUrl: "https://www.virgovisor.com",
     deliverables: [
-      "Pan-India E-Commerce Architecture",
+      "Pan-India E-Commerce Storefront",
       "Helmet Brand & Model Compatibility Selector",
-      "Optical Tint & Anti-Scratch Spec Highlights",
-      "Mobile-First Checkout & WhatsApp Support",
-      "SEO for Helmet Accessories in India"
+      "Optical Tint & Anti-Scratch Spec Showcase",
+      "Mobile-First Checkout & WhatsApp Ordering",
+      "Local & Pan-India Search Optimization"
     ],
     year: "2026",
-    favicon: "/projects/virgovisor-favicon.png",
-    bgColor: "bg-[#FAFAFA]",
-    accentColor: "#111111",
+    screenshot: "/work/virgo-visor-homepage.png",
     details: {
       overview:
         "Virgo Visor addresses the fragmented two-wheeler accessories market in India. Riders frequently struggle to find exact-fitting, distortion-free replacement visors for popular helmet models (Vega, Steelbird, Studds, and international brands).",
@@ -107,9 +101,7 @@ export const REAL_PROJECTS: Project[] = [
       "Accessible Mobile Design for Indian Families"
     ],
     year: "2026",
-    favicon: "/projects/paradise-favicon.svg",
-    bgColor: "bg-[#F7F5FC]",
-    accentColor: "#863bff",
+    screenshot: "/work/paradise-public-school-homepage.png",
     details: {
       overview:
         "Paradise Public School required an authoritative digital presence that reflects its commitment to holistic child development, academic excellence, and modern extracurricular facilities in Delhi.",

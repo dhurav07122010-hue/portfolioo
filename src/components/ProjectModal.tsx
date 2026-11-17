@@ -184,23 +184,15 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                   </a>
                 </div>
 
-                {/* Hero Showcase featuring the Website's Official Favicon */}
-                <div className={`relative aspect-[16/9] w-full ${project.bgColor} flex flex-col items-center justify-center p-8 text-center`}>
-                  <div className="relative w-24 h-24 p-5 bg-white rounded-3xl shadow-xl border border-[#E5E5E5] flex items-center justify-center mb-4">
-                    <Image
-                      src={project.favicon}
-                      alt={`${project.name} official favicon`}
-                      width={64}
-                      height={64}
-                      className="object-contain"
-                    />
-                  </div>
-                  <h3 className={`font-serif text-2xl sm:text-3xl font-bold ${project.id === "saffron-smoke" ? "text-white" : "text-[#111111]"}`}>
-                    {project.name}
-                  </h3>
-                  <p className={`text-xs font-mono uppercase tracking-wider mt-1 ${project.id === "saffron-smoke" ? "text-neutral-300" : "text-[#777777]"}`}>
-                    {project.tagline}
-                  </p>
+                {/* Real Homepage Screenshot */}
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-neutral-100">
+                  <Image
+                    src={project.screenshot}
+                    alt={`Real homepage screenshot of ${project.name}`}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 1000px"
+                    className="object-cover object-top"
+                  />
                 </div>
 
                 {/* Project Overview Details below frame */}

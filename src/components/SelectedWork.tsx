@@ -1,14 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import { REAL_PROJECTS, Project } from "@/data/projects";
+import { REAL_PROJECTS } from "@/data/projects";
 import { ProjectCard } from "./ProjectCard";
-import { ProjectModal } from "./ProjectModal";
 import { ArrowUpRight } from "lucide-react";
 
 export function SelectedWork() {
-  const [activeModalProject, setActiveModalProject] = useState<Project | null>(null);
-
   return (
     <section
       id="work"
@@ -25,12 +21,12 @@ export function SelectedWork() {
             id="selected-work-title"
             className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-tight text-[#111111]"
           >
-            Digital Flagships &amp; Live Projects.
+            Real Digital Projects.
           </h2>
         </div>
 
         <p className="max-w-md text-sm sm:text-base text-[#666666] leading-relaxed">
-          Explore three recent live web platforms engineered by DS Studios across Indian hospitality, pan-India e-commerce, and educational institutions.
+          Explore three recent live websites engineered by DS Studios across Indian dining, pan-India e-commerce, and educational institutions.
         </p>
       </div>
 
@@ -38,10 +34,7 @@ export function SelectedWork() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
         {REAL_PROJECTS.map((project) => (
           <div key={project.id} className="flex">
-            <ProjectCard
-              project={project}
-              onOpenPreview={(p) => setActiveModalProject(p)}
-            />
+            <ProjectCard project={project} />
           </div>
         ))}
       </div>
@@ -65,12 +58,6 @@ export function SelectedWork() {
           <ArrowUpRight className="w-3.5 h-3.5" />
         </a>
       </div>
-
-      {/* Modal Inspector for Project Deep Dive */}
-      <ProjectModal
-        project={activeModalProject}
-        onClose={() => setActiveModalProject(null)}
-      />
     </section>
   );
 }
