@@ -112,7 +112,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const recipientEmail = process.env.CONTACT_TO_EMAIL || "ds.studio.buissness@gmail.com";
+    const recipientEmail = process.env.CONTACT_TO_EMAIL || "dhurav07122010@gmail.com";
     const senderEmail = process.env.CONTACT_FROM_EMAIL || "DS Studios <onboarding@resend.dev>";
     const resendApiKey = process.env.RESEND_API_KEY;
     const smtpHost = process.env.SMTP_HOST;
