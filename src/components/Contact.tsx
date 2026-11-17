@@ -43,6 +43,7 @@ export function Contact() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const validate = (): boolean => {
     const newErrors: FormErrors = {};
@@ -75,14 +76,40 @@ export function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitError(null);
 
     if (formData.honeypot) return;
     if (!validate()) return;
 
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 800));
-    setIsSubmitting(false);
-    setSubmitted(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json().catch(() => null);
+
+      if (!res.ok || !data?.success) {
+        throw new Error(
+          data?.error ||
+            "Unable to deliver message through mail server. Please try again or message directly via WhatsApp."
+        );
+      }
+
+      setSubmitted(true);
+    } catch (err: unknown) {
+      const message =
+        err instanceof Error
+          ? err.message
+          : "An unexpected error occurred. Please try again or reach out on WhatsApp.";
+      setSubmitError(message);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleReset = () => {
@@ -96,6 +123,7 @@ export function Contact() {
       honeypot: "",
     });
     setErrors({});
+    setSubmitError(null);
     setSubmitted(false);
   };
 
@@ -452,17 +480,51 @@ export function Contact() {
                 )}
               </div>
 
+              {/* Submission Error Banner */}
+              {submitError && (
+                <div
+                  role="alert"
+                  className="p-4 bg-red-50 border border-red-200 text-red-900 text-xs font-mono space-y-2"
+                >
+                  <div className="flex items-start gap-2">
+                    <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+                    <div className="space-y-1">
+                      <p className="font-bold uppercase tracking-wider text-red-950">Transmission Note</p>
+                      <p className="leading-relaxed">{submitError}</p>
+                    </div>
+                  </div>
+                  <div className="pt-2 border-t border-red-200 flex flex-wrap gap-3 text-[11px]">
+                    <a
+                      href={whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline font-bold text-red-950 hover:text-black flex items-center gap-1"
+                    >
+                      <MessageCircle className="w-3 h-3" />
+                      <span>Chat on WhatsApp (+91 9873111153) &rarr;</span>
+                    </a>
+                    <a
+                      href="mailto:ds.studio.buissness@gmail.com"
+                      className="underline text-red-900 hover:text-black flex items-center gap-1"
+                    >
+                      <Mail className="w-3 h-3" />
+                      <span>Email Directly &rarr;</span>
+                    </a>
+                  </div>
+                </div>
+              )}
+
               {/* Submit Button */}
               <div className="pt-2">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 bg-[#111111] text-white text-xs font-mono uppercase tracking-widest hover:bg-[#333333] transition-colors flex items-center justify-center gap-2 disabled:opacity-50"
+                  className="w-full py-4 bg-[#111111] text-white text-xs font-mono uppercase tracking-widest hover:bg-[#333333] transition-colors flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     <>
                       <Loader2 className="w-4 h-4 animate-spin" />
-                      <span>Verifying Brief...</span>
+                      <span>Transmitting Enquiry...</span>
                     </>
                   ) : (
                     <>
